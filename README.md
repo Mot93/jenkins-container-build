@@ -3,7 +3,7 @@ The aim of this project is to build a container running [Jenkins](https://github
 
 I decided to create this project because I couldn't find a container image for my raspberry pi.
 
-With the content of this folder, anyone can create a jenkins container for the platform of it's chhosing, as long as the platform is supported by [Alpine](https://www.alpinelinux.org/) and  [OpenJDK 11](https://openjdk.java.net/projects/jdk/11/).
+With the content of this folder, anyone can create a jenkins container for the platform of it's chosing, as long as the platform is supported by [Alpine](https://www.alpinelinux.org/) and  [OpenJDK 11](https://openjdk.java.net/projects/jdk/11/).
 
 # How to build the image
 
