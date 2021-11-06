@@ -8,6 +8,7 @@ With the content of this folder, anyone can create a jenkins container for the p
 # How to build the image
 
 1. Download the jenkins war file of the version you would like to use. 
+    
     If the latest version is needed, just launch the `download_latest.sh` file.
 
 2. Build the image usign the `Dockerfile`.
