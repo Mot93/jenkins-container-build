@@ -1,9 +1,19 @@
-# jenkins-container
-Dockerfile to create a container of Jenkins.
-I created this project to manage the absense of an image of jenkins designed for arm.
-With this simple Dockerfile you can build on any platform using any version of Jenkins.
-The only pre requisite is to have the jenkins war of your choosing.
+# Jenkins
+The aim of this project is to build a container running [Jenkins](https://github.com/jenkinsci/jenkins).
 
-## Note
-* The home folder of jenkins is set to /var/lib/jenkins
-* At this [link](https://www.jenkins.io/doc/book/installing/initial-settings/) is possible to find different configuration for the war.
+I decided to create this project because I couldn't find a container image for my raspberry pi.
+
+With the content of this folder, anyone can create a jenkins container for the platform of it's chhosing, as long as the platform is supported by [Alpine](https://www.alpinelinux.org/) and  [OpenJDK 11](https://openjdk.java.net/projects/jdk/11/).
+
+# How to build the image
+
+1. Download the jenkins war file of the version you would like to use. 
+    If the latest version is needed, just launch the `download_latest.sh` file.
+
+2. Build the image usign the `Dockerfile`.
+    Since I prefer to use podman:
+
+        podman build . --tag jenkins
+    
+# Notes
+It's possible to find additional installation configuaration [here](https://www.jenkins.io/doc/book/installing/initial-settings/).
