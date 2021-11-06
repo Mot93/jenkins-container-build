@@ -1,13 +1,12 @@
-FROM debian:buster
+FROM docker.io/alpine:3
+
+RUN apk add openjdk11
 
 ENV JENKINS_HOME=/var/lib/jenkins
 
-RUN mkdir -p $JENKINS_HOME && \
-apt update && \
-apt upgrade -y && \
-apt install openjdk-11-jre -y
+WORKDIR /var/lib/jenkins
 
 COPY jenkins.war ./
 
 # https://www.jenkins.io/doc/book/installing/initial-settings/
-CMD java -jar jenkins.war
+CMD ["java", "-jar", "jenkins.war"]
