@@ -1,10 +1,9 @@
 FROM docker.io/alpine:3
 
-RUN apk add openjdk11
+RUN apk add openjdk11 \
+&& apk add ttf-dejavu
 
 ENV JENKINS_HOME=/var/lib/jenkins
-
-WORKDIR /var/lib/jenkins
 
 COPY jenkins.war ./
 
