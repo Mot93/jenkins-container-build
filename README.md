@@ -13,35 +13,30 @@ With the content of this folder, anyone can create a jenkins container for the p
 
 2. Building the image and starting it
 
-    ## Using Podman
+3. Build the image usign the `Dockerfile`:
 
-    1. Build the image usign the `Dockerfile`:
+        podman build . --tag jenkins
 
-            podman build . --tag jenkins
-        
-    2. Start the container
+4. Start the container
 
-            podman run -d -p 8080:8080 --name jenkins jenkins
+        podman run -d -p 8080:8080 --name jenkins jenkins
 
-    3. Get the generated admin password
+5. Get the generated admin password
 
-            podman exec jenkins cat /var/lib/jenkins/secrets/initialAdminPassword
-
-    ## Using Docker
-
-    1. Build the image usign the `Dockerfile`:
-
-            docker build . --tag jenkins
-        
-    2. Start the container
-
-            docker run -d -p 8080:8080 --name jenkins jenkins
-
-    3. Get the generated admin password
-
-            docker exec jenkins cat /var/lib/jenkins/secrets/initialAdminPassword
+        podman exec jenkins cat /var/lib/jenkins/secrets/initialAdminPassword
     
-3. Browse at http://localhost:8080     
+6. Browse at http://localhost:8080     
+
+## Using docker
+If you prefer to use docker, simply substitute `podman` with `docker`.
+
+## Using `podman-compose`
+
+    podman-compose -p pod-mattiarubinicom build
+
+    podman-compose -p pod-mattiarubinicom up -d
+
+    podman-compose -p pod-mattiarubinicom down
 
 # Notes
 It's possible to find additional installation configuaration [here](https://www.jenkins.io/doc/book/installing/initial-settings/).
