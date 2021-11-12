@@ -1,0 +1,58 @@
+# Save the output of this file and use kubectl create -f to import
+# it into Kubernetes.
+#
+# Created with podman-3.4.0
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2021-11-12T15:39:20Z"
+  labels:
+    app: pod-jenkins
+  name: pod-jenkins
+spec:
+  ports:
+  - name: "8080"
+    nodePort: 31388
+    port: 8080
+    protocol: TCP
+    targetPort: 0
+  selector:
+    app: pod-jenkins
+  type: NodePort
+status:
+  loadBalancer: {}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2021-11-12T15:39:20Z"
+  labels:
+    app: pod-jenkins
+  name: pod-jenkins
+spec:
+  containers:
+  - env:
+    - name: JENKINS_HOME
+      value: /var/lib/jenkins
+    image: localhost/pod-jenkins_jenkins:latest
+    name: jenkins
+    ports:
+    - containerPort: 8080
+      hostPort: 8080
+      protocol: TCP
+    resources: {}
+    securityContext:
+      allowPrivilegeEscalation: true
+      capabilities:
+        drop:
+        - CAP_MKNOD
+        - CAP_NET_RAW
+        - CAP_AUDIT_WRITE
+      privileged: false
+      readOnlyRootFilesystem: false
+      seLinuxOptions: {}
+    workingDir: /
+  dnsConfig: {}
+  restartPolicy: Never
+status: {}
+
