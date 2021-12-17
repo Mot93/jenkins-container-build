@@ -5,6 +5,10 @@ if test -f "jenkins.war"; then
     rm -r jenkins.war
 fi
 
+# Display what war is gonna be used
+curl -s https://api.github.com/repos/jenkinsci/jenkins/releases/latest \
+| grep "jenkins.war" 
+
 # Dowaload the latest jenkins war
 curl -s https://api.github.com/repos/jenkinsci/jenkins/releases/latest \
 | grep "jenkins.war" \
