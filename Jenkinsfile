@@ -6,5 +6,5 @@ pipeline {
             registryCredentialsId 'dockerhub'
         }
     }
-    stages{}
+    //stages{}
 }
