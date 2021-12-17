@@ -1,0 +1,13 @@
+FROM docker.io/alpine:3
+
+COPY download_latest.sh ./
+
+RUN apk add openjdk11 \
+&& apk add ttf-dejavu \
+&& apk add git \
+&& ./download_latest.sh
+
+ENV JENKINS_HOME=/var/lib/jenkins
+
+# https://www.jenkins.io/doc/book/installing/initial-settings/
+CMD ["java", "-jar", "jenkins.war"]

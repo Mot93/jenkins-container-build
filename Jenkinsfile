@@ -2,7 +2,7 @@ pipeline {
 
     agent {
         dockerfile {
-            filename 'Dockerfile'
+            filename 'Dockerfile.jenkins'
             registryCredentialsId 'dockerhub'
             args '--tag docker.io/dancingcactus93/jenkins:latest-armv8'
         }
