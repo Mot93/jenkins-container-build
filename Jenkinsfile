@@ -3,12 +3,12 @@ pipeline {
     agent {
         dockerfile {
             filename 'Dockerfile'
-            label 'dancingcactus93/jenkins:latest-armv8'
             registryCredentialsId 'dockerhub'
+            args '--tag docker.io/dancingcactus93/jenkins:latest-armv8'
         }
     }
 
-    stages{
+    stages {
         stage('Test') {
             steps {
                 sh java -version
