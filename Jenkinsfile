@@ -1,25 +1,9 @@
 pipeline {
     agent {
-        docker {
-            image 'alpine:3.14'
+        dockerfile {
+            filename 'Dockerfile'
+            label 'dancingcactus93/jenkins:latest-armv8'
+            registryCredentialsId 'dockerhub'
         }
-    }
-
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-            }
-        }
-        /*stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }*/
     }
 }
