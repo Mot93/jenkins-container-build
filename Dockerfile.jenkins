@@ -1,18 +1,15 @@
 FROM docker.io/alpine:3
 
+COPY download_latest.sh /
+
 RUN apk add openjdk11 \
 && apk add ttf-dejavu \
 && apk add git \
 && apk add wget \
-&& apk add curl
-
-COPY download_latest.sh /
-
-RUN chmod +x /download_latest.sh 
-
-RUN ./download_latest.sh 
-
-RUN rm -f /download_latest.sh
+&& apk add curl \
+chmod +x /download_latest.sh \
+./download_latest.sh \
+rm -f /download_latest.sh
 
 ENV JENKINS_HOME=/var/lib/jenkins
 
