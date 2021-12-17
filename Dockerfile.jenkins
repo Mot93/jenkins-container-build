@@ -5,7 +5,8 @@ COPY download_latest.sh ./
 RUN apk add openjdk11 \
 && apk add ttf-dejavu \
 && apk add git \
-&& ./download_latest.sh
+&& apk add wget \
+&& /root/download_latest.sh
 
 ENV JENKINS_HOME=/var/lib/jenkins
 
