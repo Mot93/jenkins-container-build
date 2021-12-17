@@ -1,7 +1,8 @@
 FROM docker.io/alpine:3
 
 RUN apk add openjdk11 \
-&& apk add ttf-dejavu
+&& apk add ttf-dejavu \
+&& apk add git
 
 ENV JENKINS_HOME=/var/lib/jenkins
 
