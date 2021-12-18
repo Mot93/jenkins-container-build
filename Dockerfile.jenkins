@@ -7,9 +7,8 @@ RUN apk add openjdk11 \
 && apk add git \
 && apk add wget \
 && apk add curl \
-chmod +x /download_latest.sh \
-./download_latest.sh \
-rm -f /download_latest.sh
+&& chmod +x /download_latest.sh \
+&& ./download_latest.sh
 
 ENV JENKINS_HOME=/var/lib/jenkins
 
