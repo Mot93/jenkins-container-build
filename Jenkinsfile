@@ -11,6 +11,9 @@ pipeline {
 
     stages {
         stage('Test') {
+            agent {
+                docker { image 'docker:latest' }
+            }
             steps {
                 sh 'java -version'
                 sh 'cat /etc/os-release'
