@@ -61,14 +61,42 @@ Unlike podman, docker always runs as root and can bind any container to any port
 
         podman-compose -p pod-jenkins down
 
-# Notes
-It's possible to find additional installation configuaration [here](https://www.jenkins.io/doc/book/installing/initial-settings/).
-
-
 ## Using `docker-compose`
 Just replace `podman-compose` with `docker-compose`.
 
 **NOTE**: unlike `docker-compose` all container are place in a virtual network and can listen on the same port.
+
+# Notes
+It's possible to find additional Jenkins installation configuaration [here](https://www.jenkins.io/doc/book/installing/initial-settings/).
+
+# Uploading to a container registry
+
+## Using `podman` 
+
+1. Download the jenkins war file of the version you would like to use. 
+    
+    If the latest version is needed, just launch the `download_latest.sh` file.
+
+2. Build the image usign the `Dockerfile`:
+
+        podman build . --tag <username>/jenkins:<tagname>
+
+3. Login to your account
+
+        podman login <registry>
+
+    For example
+
+        podman login index.docker.io
+
+4. Push the image
+
+        podman push <username>/jenkins:<tagname>
+
+## Using `docker`
+If you prefer to use docker, simply substitute `podman` with `docker`.
+
+Unlike podman, docker always runs as root and can bind any container to any port.
 
 # Moving to K8s
 
