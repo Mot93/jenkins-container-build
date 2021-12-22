@@ -12,7 +12,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'java -version'
-                sh 'ls /'
+                sh 'cat /etc/os-release'
             }
         }
     }
