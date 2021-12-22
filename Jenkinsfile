@@ -19,6 +19,7 @@ pipeline {
             steps {
                 sh 'java -version'
                 sh 'cat /etc/os-release'
+                sh 'ls -l /'
                 /*withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh 'docker login registry-1.docker.io -u $USERNAME -p $PASSWORD'
                 }
