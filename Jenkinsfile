@@ -6,8 +6,8 @@ pipeline {
             registryCredentialsId 'dockerhub'
             additionalBuildArgs '--tag jenkins:latest-armv8'
             args '--name jenkins'
-            registryUrl 'registry-1.docker.io'
-            registryCredentialsId 'dockerhub'
+            //registryUrl 'registry-1.docker.io'
+            //registryCredentialsId 'dockerhub'
         }
     }
 
