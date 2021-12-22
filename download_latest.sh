@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /bin/bash
 
 # If the file jenkins.war is already present, delete it
 if test -f "jenkins.war"; then
