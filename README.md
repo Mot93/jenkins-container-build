@@ -96,8 +96,6 @@ It's possible to find additional Jenkins installation configuaration [here](http
 ## Using `docker`
 If you prefer to use docker, simply substitute `podman` with `docker`.
 
-Unlike podman, docker always runs as root and can bind any container to any port.
-
 # Moving to K8s
 
 ## Using `podman-compose`
