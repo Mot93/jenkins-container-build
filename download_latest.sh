@@ -5,15 +5,18 @@ if test -f "jenkins.war"; then
     rm -r jenkins.war
 fi
 
-# Display what war is gonna be used
-curl -s https://api.github.com/repos/jenkinsci/jenkins/releases/latest \
-| grep "jenkins.war" 
-
-# Dowaload the latest jenkins war
-curl -s https://api.github.com/repos/jenkinsci/jenkins/releases/latest \
-| grep "jenkins.war" \
-| cut -d : -f 2,3 \
+# Get the latest version of Jenkins from GitHub
+latest_version=$(curl -s https://api.github.com/repos/jenkinsci/jenkins/releases/latest \
+| grep '"name":' \
+| cut -d : -f 2 \
 | tr -d \" \
-| wget -qi -
+| sed 's/,//' \
+| sed 's/ //')
+
+# Printing the version that is going to be downloaded
+echo "Downloading Jenkins version $latest_version"
+
+# Downloading the jenkins war
+wget -q "https://get.jenkins.io/war/$latest_version/jenkins.war"
 
 exit 0
