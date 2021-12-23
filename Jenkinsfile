@@ -7,9 +7,10 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                script {
+                sh 'cat /etc/os-release'
+                /*script {
                     sh 'cat /etc/os-release'
-                }
+                }*
             }
         }
     }
