@@ -1,7 +1,8 @@
 pipeline {
 
     agent {
-        label 'rpiarchserver'
+        //label 'rpiarchserver'
+        label 'docker'
     }
 
     stages {
