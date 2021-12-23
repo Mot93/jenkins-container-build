@@ -1,24 +1,5 @@
-pipeline {
-
-    agent {
-        //label 'rpiarchserver'
-        label 'docker'
-    }
-
-    stages {
-        stage('Test') {
-            steps {
-                sh 'cat /etc/os-release'
-                script {
-                    sh 'cat /etc/os-release'
-                }
-            }
-        }
-    }
-}
-
-
-/*node (label: 'rpiarchserver') {
+//node (label: 'rpiarchserver') {
+node ('rpiarchserver.mattiarubini.com') {
 
     checkout scm
 
@@ -27,4 +8,4 @@ pipeline {
 
     //jenkinsImage.push()
 
-}*/
+}
