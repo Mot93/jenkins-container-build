@@ -10,7 +10,7 @@ pipeline {
                 sh 'cat /etc/os-release'
                 /*script {
                     sh 'cat /etc/os-release'
-                }*
+                }*/
             }
         }
     }
