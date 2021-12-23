@@ -1,6 +1,8 @@
 pipeline {
 
-    agent 'rpiarchserver'
+    agent {
+        label 'rpiarchserver'
+    }
 
     stages {
         stage('Test') {
