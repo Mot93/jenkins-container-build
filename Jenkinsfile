@@ -9,9 +9,9 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'cat /etc/os-release'
-                /*script {
+                script {
                     sh 'cat /etc/os-release'
-                }*/
+                }
             }
         }
     }
