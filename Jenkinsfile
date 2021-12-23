@@ -1,4 +1,20 @@
-node (label: 'rpiarchserver') {
+pipeline {
+
+    agent 'rpiarchserver'
+
+    stages {
+        stage('Test') {
+            steps {
+                script {
+                    sh 'cat /etc/os-release'
+                }
+            }
+        }
+    }
+}
+
+
+/*node (label: 'rpiarchserver') {
 
     checkout scm
 
@@ -7,4 +23,4 @@ node (label: 'rpiarchserver') {
 
     //jenkinsImage.push()
 
-}
+}*/
