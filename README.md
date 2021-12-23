@@ -79,7 +79,7 @@ It's possible to find additional Jenkins installation configuaration [here](http
 
 2. Build the image usign the `Dockerfile`:
 
-        podman build . --tag <username>/jenkins:<tagname>
+        podman build . -f Dockerfile --tag <username>/jenkins:<tagname>
 
 3. Login to your account
 
