@@ -1,19 +1,5 @@
 #! /bin/sh
 
-# curl has to be present
-if ! command -v curl &> /dev/null
-then
-    echo "curl could not be found"
-    exit 1
-fi
-
-# wget has to be present
-if ! command -v wget &> /dev/null
-then
-    echo "wget could not be found"
-    exit 2
-fi
-
 # If the file jenkins.war is already present, delete it
 if test -f "jenkins.war"
 then
