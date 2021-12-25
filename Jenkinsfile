@@ -1,18 +1,13 @@
 pipeline {
 
     agent {
-        docker {
-            image 'docker:latest'
-            registryUrl 'https://index.docker.io/v1/'
-            registryCredentialsId 'container-registry'
-        }
-        /*dockerfile {
+        dockerfile {
             filename 'jenkins-builder.Dockerfile'
             additionalBuildArgs '--tag jenkins-builder:bullseye'
             args '--name jenkins-builder'
             registryUrl 'https://index.docker.io/v1/'
             registryCredentialsId 'container-registry'
-        }*/
+        }
     }
 
     environment {
