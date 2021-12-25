@@ -6,13 +6,13 @@ pipeline {
             additionalBuildArgs '--tag jenkins-builder:bullseye'
             args '--name jenkins-builder'
             registryUrl 'https://index.docker.io/v1/'
-            registryCredentialsId 'docker-registry'
+            registryCredentialsId 'container-registry'
         }
     }
 
     environment {
-        BUILD_USER = "user"
-        BUILD_TAG_NAME = "tagname"
+        CONTAINER_REGISTRY = credentials(container-registry)
+        BUILD_TAG = "${CONTAINER_REGISTRY_USR}/jenkins:<tagname>"
     }
 
     stages {
@@ -26,7 +26,7 @@ pipeline {
         stage ('Build') {
             steps {
 
-                    sh 'echo "build . -f Dockerfile --tag ${BUILD_USER}/jekins:${BUILD_TAG_NAME}"'
+                    sh 'echo "build . -f Dockerfile --tag $BUILD_TAG"'
                     //sh 'docker build . -f Dockerfile --tag <username>/jenkins:<tagname>'
                 
             }
