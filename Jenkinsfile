@@ -21,7 +21,7 @@ pipeline {
         stage ('Build') {
             steps {
 
-                    sh 'docker build . -f Dockerfile --tag $BUILD_TAG'
+                sh 'docker build . -f Dockerfile --tag $BUILD_TAG'
                 
             }
         }
@@ -35,7 +35,7 @@ pipeline {
         stage ('Upload') {
             steps{
 
-                sh 'docker login -u CONTAINER_REGISTRY_USR -p CONTAINER_REGISTRY_PSW index.docker.io'
+                sh 'docker login -u ${CONTAINER_REGISTRY_USR} -p ${CONTAINER_REGISTRY_PSW} index.docker.io'
                 sh 'docker push $BUILD_TAG'
 
             }
