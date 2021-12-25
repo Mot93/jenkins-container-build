@@ -10,6 +10,10 @@ pipeline {
         }
     }
 
+    environment {
+        BUILD_TAG = "<username>/jenkins:<tagname>"
+    }
+
     stages {
         stage ('Pre Build'){
             steps {
@@ -21,7 +25,7 @@ pipeline {
         stage ('Build') {
             steps {
                 
-                sh 'echo "build . -f Dockerfile --tag <username>/jenkins:<tagname>"'
+                sh 'echo "build . -f Dockerfile --tag $BUILD_TAG"'
                 //sh 'docker build . -f Dockerfile --tag <username>/jenkins:<tagname>'
                 
             }
@@ -38,7 +42,7 @@ pipeline {
 
                 sh 'echo "-u <user> -p <password> <registry>"'
                 //sh 'docker login -u <user> -p <password> <registry>'
-                sh 'echo "<username>/jenkins:<tagname>"'
+                sh 'echo "$BUILD_TAG"'
                 //sh 'docker push <username>/jenkins:<tagname>'
 
             }
