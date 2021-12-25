@@ -1,16 +1,3 @@
-/*node (label: 'rpiarchserver') {
-
-    checkout scm
-
-    stage ('Build'){
-        def jenkinsImage = docker.build("jenkins:latest-armv8")
-        //def jenkinsImage = docker.build("jenkins:latest-armv8","-f Dockerfile.jenkins ./")
-    }
-
-    //jenkinsImage.push()
-
-}*/
-
 pipeline {
 
     agent {
@@ -18,11 +5,19 @@ pipeline {
     }
 
     stages {
-        stage('Test') {
+        stage('Build') {
             steps {
-                sh 'echo hello!'
-                sh 'cat /etc/os-release'
+                sh './download_latest.sh'
+                sh 'echo "build . -f Dockerfile --tag <username>/jenkins:<tagname>"'
+                //sh 'docker build . -f Dockerfile --tag <username>/jenkins:<tagname>'
+                sh 'echo "-u <user> -p <password> <registry>"'
+                //sh 'docker login -u <user> -p <password> <registry>'
+                sh 'echo "-u <user> -p <password> <registry>"'
+                //sh 'docker login -u <user> -p <password> <registry>'
+                sh 'echo <username>/jenkins:<tagname>"'
+                //sh 'docker push <username>/jenkins:<tagname>'
             }
         }
     }
+
 }
