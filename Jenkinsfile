@@ -4,7 +4,7 @@ pipeline {
         dockerfile {
             filename 'jenkins-builder.Dockerfile'
             additionalBuildArgs '--tag jenkins-builder:bullseye'
-            args '--name jenkins-builder'
+            args '--name jenkins-builder --privileged'
             registryUrl 'https://index.docker.io/v1/'
             registryCredentialsId 'container-registry'
         }
