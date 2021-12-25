@@ -142,4 +142,11 @@ In this project, you'll find a `Jenkinsfile` that can be used to automate the co
 
 1. The container registry credentials as `container-registry`
 
-2. On the node that is in chage of building the container, setup the variable `PROCESS_ARCHITECTURE`
+2. On the node in charge of the build:
+    
+    1. Setup the variable `PROCESS_ARCHITECTURE`
+
+    2. Install the packager `curl`, `wget` & `docker`
+
+## Note 
+When using Jenkins, Docker is a better alternative than podman because there is a better integration
