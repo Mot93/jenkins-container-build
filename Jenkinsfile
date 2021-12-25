@@ -12,7 +12,7 @@ pipeline {
 
     environment {
         CONTAINER_REGISTRY = credentials("container-registry")
-        BUILD_TAG = "${CONTAINER_REGISTRY_USR}/jenkins:<tagname>"
+        BUILD_TAG = "${CONTAINER_REGISTRY_USR}/jenkins:latest-${PROCESS_ARCHITECTURE}"
     }
 
     stages {
