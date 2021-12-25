@@ -132,3 +132,14 @@ To apply to k8s the configuration:
 Podman offers to run some of the kubernetes configurations via `podman play` tool:
 
     podman play kube <kubernetes config>
+
+# Automating builds with Jenkins
+Jenkins is a great tool to automate many things, including builds.
+
+In this project, you'll find a `Jenkinsfile` that can be used to automate the container bulding process.
+
+## ***Remember to setup***:
+
+1. The container registry credentials as `container-registry`
+
+2. On the node that is in chage of building the container, setup the variable `PROCESS_ARCHITECTURE`
