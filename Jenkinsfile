@@ -19,7 +19,8 @@ pipeline {
         stage ('Pre Build'){
             steps {
 
-                sh './download_latest.sh'
+                sh 'pwd'
+                sh '/download_latest.sh'
                 
             }
         }
