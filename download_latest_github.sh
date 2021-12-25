@@ -15,7 +15,8 @@ then
 fi
 
 # If the file jenkins.war is already present, delete it
-if test -f "jenkins.war"; then
+if test -f "jenkins.war"
+then
     rm -r jenkins.war
 fi
 
@@ -29,11 +30,5 @@ curl -s https://api.github.com/repos/jenkinsci/jenkins/releases/latest \
 | cut -d : -f 2,3 \
 | tr -d \" \
 | wget -qi -
-
-# If the file jenkins.war wasn't downloaded, return error
-if ! [[ test -f "jenkins.war" ]] then
-    echo "Could not download jenkins.war"
-    exit 3
-fi
 
 exit 0
