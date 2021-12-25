@@ -1,4 +1,18 @@
-#! /bin/bash
+#! /bin/sh
+
+# curl has to be present
+if ! command -v curl &> /dev/null
+then
+    echo "curl could not be found"
+    exit 1
+fi
+
+# wget has to be present
+if ! command -v wget &> /dev/null
+then
+    echo "wget could not be found"
+    exit 2
+fi
 
 # If the file jenkins.war is already present, delete it
 if test -f "jenkins.war"; then
@@ -15,5 +29,11 @@ curl -s https://api.github.com/repos/jenkinsci/jenkins/releases/latest \
 | cut -d : -f 2,3 \
 | tr -d \" \
 | wget -qi -
+
+# If the file jenkins.war wasn't downloaded, return error
+if ! [[ test -f "jenkins.war" ]] then
+    echo "Could not download jenkins.war"
+    exit 3
+fi
 
 exit 0

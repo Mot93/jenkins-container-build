@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/sh
 
 # curl has to be present
 if ! command -v curl &> /dev/null
@@ -32,5 +32,11 @@ echo "Downloading Jenkins version $latest_version"
 
 # Downloading the jenkins war
 wget -q "https://get.jenkins.io/war/$latest_version/jenkins.war"
+
+# If the file jenkins.war wasn't downloaded, return error
+if ! [[ test -f "jenkins.war" ]] then
+    echo "Could not download jenkins.war"
+    exit 3
+fi
 
 exit 0
