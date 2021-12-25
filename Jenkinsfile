@@ -11,7 +11,8 @@ pipeline {
     }
 
     environment {
-        BUILD_TAG = "$dockerUser/jenkins:<tagname>"
+        BUILD_USER = "user"
+        BUILD_TAG_NAME = "tagname"
     }
 
     stages {
@@ -25,10 +26,8 @@ pipeline {
         stage ('Build') {
             steps {
 
-                withCredentials([usernamePassword(credentialsId: 'private-artifactory', passwordVariable: 'dockerKey', usernameVariable: 'dockerUser')]){
-                    sh 'echo "build . -f Dockerfile --tag $BUILD_TAG"'
+                    sh 'echo "build . -f Dockerfile --tag $(BUILD_USER)/jekins:$(BUILD_TAG_NAME)"'
                     //sh 'docker build . -f Dockerfile --tag <username>/jenkins:<tagname>'
-                }
                 
             }
         }
