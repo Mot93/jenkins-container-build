@@ -19,9 +19,6 @@ pipeline {
         stage ('Pre Build'){
             steps {
 
-                sh 'cat /etc/os-release'
-                sh 'pwd'
-                sh 'ls'
                 sh 'chmod +x ./download_latest.sh'
                 sh './download_latest.sh'
                 
