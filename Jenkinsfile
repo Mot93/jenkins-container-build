@@ -11,16 +11,29 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage ('Pre Build'){
             steps {
                 sh './download_latest.sh'
+            }
+        }
+        stage ('Build') {
+            steps {
+                
                 sh 'echo "build . -f Dockerfile --tag <username>/jenkins:<tagname>"'
                 //sh 'docker build . -f Dockerfile --tag <username>/jenkins:<tagname>'
+                
+            }
+        }
+        stage ('Test'){
+            steps {
+                sh 'echo "yet to be defined"'
+            }
+        }
+        stage ('Upload') {
+            stages{
                 sh 'echo "-u <user> -p <password> <registry>"'
                 //sh 'docker login -u <user> -p <password> <registry>'
-                sh 'echo "-u <user> -p <password> <registry>"'
-                //sh 'docker login -u <user> -p <password> <registry>'
-                sh 'echo <username>/jenkins:<tagname>"'
+                sh 'echo "<username>/jenkins:<tagname>"'
                 //sh 'docker push <username>/jenkins:<tagname>'
             }
         }
