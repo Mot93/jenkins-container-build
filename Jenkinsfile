@@ -1,7 +1,13 @@
 pipeline {
 
     agent {
-        label "docker"
+        dockerfile {
+            filename 'jenkins-builder.Dockerfile'
+            additionalBuildArgs '--tag jenkins-builder:bullseye'
+            args '--name jenkins-builder'
+            registryUrl 'https://index.docker.io/v1/'
+            registryCredentialsId 'docker-registry'
+        }
     }
 
     stages {
