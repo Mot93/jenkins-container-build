@@ -3,4 +3,4 @@ FROM docker.io/debian:bullseye
 
 RUN apt update \
 && apt upgrade -y \
-&& apt install wget curl podman -y
+&& apt install wget curl docker -y
