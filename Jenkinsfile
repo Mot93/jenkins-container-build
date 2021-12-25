@@ -3,6 +3,8 @@ pipeline {
     agent {
         docker {
             image 'docker:latest'
+            registryUrl 'https://index.docker.io/v1/'
+            registryCredentialsId 'container-registry'
         }
         /*dockerfile {
             filename 'jenkins-builder.Dockerfile'
