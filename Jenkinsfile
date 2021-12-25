@@ -27,6 +27,7 @@ pipeline {
         stage ('Build') {
             steps {
 
+                    sh 'service docker start'
                     sh 'docker build . -f Dockerfile --tag $BUILD_TAG'
                 
             }
