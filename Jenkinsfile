@@ -26,7 +26,7 @@ pipeline {
         stage ('Build') {
             steps {
 
-                    sh 'echo "build . -f Dockerfile --tag $(BUILD_USER)/jekins:$(BUILD_TAG_NAME)"'
+                    sh 'echo "build . -f Dockerfile --tag ${BUILD_USER}/jekins:${BUILD_TAG_NAME}"'
                     //sh 'docker build . -f Dockerfile --tag <username>/jenkins:<tagname>'
                 
             }
