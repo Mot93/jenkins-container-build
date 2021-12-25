@@ -1,13 +1,7 @@
 pipeline {
 
     agent {
-        dockerfile {
-            filename 'jenkins-builder.Dockerfile'
-            additionalBuildArgs '--tag jenkins-builder:bullseye'
-            args '--name jenkins-builder --privileged=true'
-            registryUrl 'https://index.docker.io/v1/'
-            registryCredentialsId 'container-registry'
-        }
+        label 'docker'
     }
 
     environment {
@@ -27,7 +21,7 @@ pipeline {
         stage ('Build') {
             steps {
 
-                    sh 'podman build . -f Dockerfile --tag $BUILD_TAG'
+                    sh 'docker build . -f Dockerfile --tag $BUILD_TAG'
                 
             }
         }
@@ -41,8 +35,8 @@ pipeline {
         stage ('Upload') {
             steps{
 
-                sh 'podman login -u CONTAINER_REGISTRY_USR -p CONTAINER_REGISTRY_PSW index.docker.io'
-                sh 'podman push $BUILD_TAG'
+                sh 'docker login -u CONTAINER_REGISTRY_USR -p CONTAINER_REGISTRY_PSW index.docker.io'
+                sh 'docker push $BUILD_TAG'
 
             }
         }
