@@ -21,6 +21,7 @@ pipeline {
 
                 sh 'cat /etc/os-release'
                 sh 'pwd'
+                sh 'ls'
                 sh '/download_latest.sh'
                 
             }
