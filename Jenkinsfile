@@ -11,7 +11,7 @@ pipeline {
     }
 
     environment {
-        CONTAINER_REGISTRY = credentials(container-registry)
+        CONTAINER_REGISTRY = credentials("container-registry")
         BUILD_TAG = "${CONTAINER_REGISTRY_USR}/jenkins:<tagname>"
     }
 
