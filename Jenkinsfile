@@ -32,7 +32,16 @@ pipeline {
         stage ('Test'){
             steps {
 
-                sh 'echo "yet to be defined"'
+                script {
+
+                    docker.image('my-custom-image').inside {
+
+                        sh 'echo tests pending'
+
+                    }
+
+                }
+                //sh 'echo "yet to be defined"'
 
             }
         }
@@ -41,7 +50,7 @@ pipeline {
 
                 script {
 
-                    docker.withRegistry('https://index.docker.io', 'container-registry') {
+                    docker.withRegistry('https://index.docker.io/v1/', 'container-registry') {
 
                         def jenkins_container = docker.image("${BUILD_TAG}")
                         jenkins_container.push()
