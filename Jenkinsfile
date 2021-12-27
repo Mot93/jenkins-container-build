@@ -21,7 +21,12 @@ pipeline {
         stage ('Build') {
             steps {
 
-                sh 'docker build . -f Dockerfile --tag $BUILD_TAG'
+                script {
+
+                    def jenkins_container = docker.build("${BUILD_TAG}")
+                    
+                }
+                //sh 'docker build . -f Dockerfile --tag $BUILD_TAG'
                 
             }
         }
