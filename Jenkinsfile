@@ -23,7 +23,7 @@ pipeline {
 
                 script {
 
-                    def jenkins_container = docker.build("${BUILD_TAG}")
+                    def container = docker.build("${BUILD_TAG}")
 
                 }
                 
@@ -57,13 +57,13 @@ pipeline {
 
                     /*docker.withRegistry('https://index.docker.io/v1/', 'container-registry') {
 
-                        def jenkins_container = docker.image("${BUILD_TAG}")
-                        jenkins_container.push()
+                        def container = docker.image("${BUILD_TAG}")
+                        container.push()
 
                     }*/
 
-                    def jenkins_container = docker.image("${BUILD_TAG}")
-                    jenkins_container.push()
+                    def container = docker.image("${BUILD_TAG}")
+                    container.push()
 
                 }
                 //sh 'docker login -u ${CONTAINER_REGISTRY_USR} -p ${CONTAINER_REGISTRY_PSW} index.docker.io && docker push $BUILD_TAG'
