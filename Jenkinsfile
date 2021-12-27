@@ -24,7 +24,7 @@ pipeline {
                 script {
 
                     def jenkins_container = docker.build("${BUILD_TAG}")
-                    
+
                 }
                 //sh 'docker build . -f Dockerfile --tag $BUILD_TAG'
                 
@@ -40,7 +40,17 @@ pipeline {
         stage ('Upload') {
             steps{
 
-                sh 'docker login -u ${CONTAINER_REGISTRY_USR} -p ${CONTAINER_REGISTRY_PSW} index.docker.io && docker push $BUILD_TAG'
+                script {
+
+                    docker.withRegistry('https://index.docker.io/v1', 'container-registry') {
+
+                        def jenkins_container = docker.build("${BUILD_TAG}")
+                        jenkins_container.push()
+
+                    }
+
+                }
+                //sh 'docker login -u ${CONTAINER_REGISTRY_USR} -p ${CONTAINER_REGISTRY_PSW} index.docker.io && docker push $BUILD_TAG'
 
             }
         }
