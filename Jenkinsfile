@@ -26,7 +26,6 @@ pipeline {
                     def jenkins_container = docker.build("${BUILD_TAG}")
 
                 }
-                //sh 'docker build . -f Dockerfile --tag $BUILD_TAG'
                 
             }
         }
@@ -42,7 +41,7 @@ pipeline {
 
                 script {
 
-                    docker.withRegistry('https://index.docker.io/v1', 'container-registry') {
+                    docker.withRegistry('https://index.docker.io', 'container-registry') {
 
                         def jenkins_container = docker.image("${BUILD_TAG}")
                         jenkins_container.push()
