@@ -44,7 +44,7 @@ pipeline {
 
                     docker.withRegistry('https://index.docker.io/v1', 'container-registry') {
 
-                        //def jenkins_container = docker.build("${BUILD_TAG}")
+                        def jenkins_container = docker.image("${BUILD_TAG}")
                         jenkins_container.push()
 
                     }
