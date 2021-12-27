@@ -34,7 +34,7 @@ pipeline {
 
                 script {
 
-                    docker.image('my-custom-image').inside {
+                    docker.image("${BUILD_TAG}").inside {
 
                         sh 'echo tests pending'
 
