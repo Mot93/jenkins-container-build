@@ -153,7 +153,7 @@ In this project, you'll find a `Jenkinsfile` that can be used to automate the co
 
 1. The container registry credentials as `container-registry`
 
-2. Install the Jenkins plugins: Docker and Docker Pipeline
+2. Install the Jenkins plugins: [Docker](https://plugins.jenkins.io/docker-plugin/) and [Docker Pipeline](https://plugins.jenkins.io/docker-workflow/)
 
 3. On the node in charge of the build:
     
