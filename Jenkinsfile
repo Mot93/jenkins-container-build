@@ -20,34 +20,26 @@ pipeline {
         }
         stage ('Build') {
             steps {
-
                 script {
 
                     def container = docker.build("${BUILD_TAG}")
 
-                }
-                
+                }   
             }
         }
         stage ('Test'){
             steps {
-
                 script {
-
                     docker.image("${BUILD_TAG}").inside {
 
                         sh 'echo tests pending'
 
                     }
-
                 }
-                //sh 'echo "yet to be defined"'
-
             }
         }
         stage ('Upload') {
             steps{
-
                 script {
 
                     //  Use this code if using a registry that is not the one configured in 
@@ -66,8 +58,6 @@ pipeline {
                     container.push()
 
                 }
-                //sh 'docker login -u ${CONTAINER_REGISTRY_USR} -p ${CONTAINER_REGISTRY_PSW} index.docker.io && docker push $BUILD_TAG'
-
             }
         }
     }
